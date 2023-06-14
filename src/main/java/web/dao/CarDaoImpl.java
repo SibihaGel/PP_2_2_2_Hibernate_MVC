@@ -1,32 +1,27 @@
 package web.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import web.models.Car;
-import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Repository
 public class CarDaoImpl implements CarDao {
-
-    private static int CAR_COUNT;
-    private List<Car> carList;
+    @Autowired
+   private static List<Car> carList;
 
     { carList = new ArrayList<>();
 
-        carList.add(new Car(++CAR_COUNT,"Mercedes","E220"));
-        carList.add(new Car(++CAR_COUNT,"BMW","X1"));
-        carList.add(new Car(++CAR_COUNT,"Toyota","Camry"));
-        carList.add(new Car(++CAR_COUNT,"Honda","Accord"));
-        carList.add(new Car(++CAR_COUNT,"Volkswagen","Tiguan"));
+        carList.add(new Car("Mercedes","E220"));
+        carList.add(new Car("BMW","X1"));
+        carList.add(new Car("Toyota","Camry"));
+        carList.add(new Car("Honda","Accord"));
+        carList.add(new Car("Volkswagen","Tiguan"));
     }
-//    @Override
-//    public List<Car> showCars() { // Выводит список всех авто
-//        return carList;
-//    }
     @Override
-    public List<Car> showId(int count) {  // Выводит ограниченный список
-
-         return carList.stream().limit(count).collect(Collectors.toList());
+    public List<Car> showSelectCar(int count) {
+        return carList.stream().limit(count).collect(Collectors.toList());
     }
 }

@@ -2,25 +2,15 @@ package web.models;
 
 public class Car {
 
-    private int id;
     private String brand;
     private String type;
 
-    public Car(int id, String brand, String type) {
-        this.id = id;
+    public Car(String brand, String type) {
         this.brand = brand;
         this.type = type;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getBrand() {
+   public String getBrand() {
         return brand;
     }
 
